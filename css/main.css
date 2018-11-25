@@ -17,4 +17,5 @@ html, body {
     background-color: white;
     border-radius: 5px;
     margin-top: 10px;
+    display: hidden;
 }
