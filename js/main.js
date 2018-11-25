@@ -9,7 +9,7 @@ function shuffle() {
 
 // show card
 $('.card').click(function() {
-$(this).css('background-color', 'blue')
+$(this).find('img').css('opacity', '1')
 });
 
 // call shuffle function when the page is loaded

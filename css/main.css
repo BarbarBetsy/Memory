@@ -19,3 +19,7 @@ html, body {
     margin-top: 10px;
     display: hidden;
 }
+
+.card img {
+    opacity: 0;
+}
