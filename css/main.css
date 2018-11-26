@@ -17,9 +17,24 @@ html, body {
     background-color: white;
     border-radius: 5px;
     margin-top: 10px;
-    display: hidden;
 }
 
-.card img {
+.turnable:hover {
+    background-color: rgba(252, 206, 214, 0.925);
+}
+
+.back img {
     opacity: 0;
+}
+
+.front img {
+opacity: 100%;
+}
+
+.solved {
+    background-color: rgb(30, 82, 128);
+}
+
+.solved img {
+    opacity: 100%;
 }
