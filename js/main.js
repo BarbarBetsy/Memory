@@ -11,7 +11,7 @@ function shuffle() {
         let num = Math.floor(Math.random() * (100 - 1)) + 1;
         document.querySelector('#card' + i).style.order = num;
     }
-};
+}
 
 // hide cards again
 function hideAgain() {
@@ -19,11 +19,11 @@ function hideAgain() {
     $('.back').removeClass('front').addClass('turnable').on('click', showCard);
     counter = 0;
     cardsTurned = [];
-};
+}
 
 // show card and lock it down
 function showCard() {
-    $(this).removeClass('back').addClass('front').off('click');
+    $(this).removeClass('back turnable').addClass('front').off('click');
     if (!watch.isOn) {
         watch.start();
     }
@@ -49,7 +49,7 @@ function showCard() {
             // turn cards again
             setTimeout(hideAgain, 2000);
         }
-    };
+    }
 
     if (pairCounter === 8) {
         console.log('YAY!');
@@ -69,14 +69,14 @@ function Stopwatch() {
         time += delta();
         let formatedTime = timeFormater(time);
         timer.textContent = formatedTime;
-    };
+    }
 
     function delta() {
         let now = Date.now();
         let timePassed =  now - offset;
         offset = now;
         return timePassed;
-    };
+    }
     
     function timeFormater(timeInMilliseconds) {
         let time = new Date(timeInMilliseconds);
@@ -97,7 +97,7 @@ function Stopwatch() {
         }
 
         return minutes + " : " + seconds + " . " + milliseconds;
-    };
+    }
 
     this.isOn = false;
     
@@ -107,7 +107,7 @@ function Stopwatch() {
            offset = Date.now();
            this.isOn = true; 
         }
-    };
+    }
 
     this.stop = function() {
         if (this.isOn) {
@@ -115,11 +115,11 @@ function Stopwatch() {
             interval = null;
             this.isOn = false;
         }
-    };
+    }
     
     this.reset = function() {
         time = 0;
-    };
+    }
 }
 
 // show card
