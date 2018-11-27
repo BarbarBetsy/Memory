@@ -1,12 +1,65 @@
 html, body {
     width: 99%;
     height: 99%;
+    font-family: 'Amatic SC', cursive;
     background-color: lightblue;
+    text-align: center;
+    font-size: 25px;
+}
+
+h1 {
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 4.5em;
+}
+
+h2 {
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin: 0;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+}
+
+p {
+    font-size: 40px;
+}
+
+hr {
+    width: 50%;
+    margin: 15px auto;
+    border: 1px solid rgba(128, 128, 128, 0.356);
+}
+
+#timer {
+    background-color: white;
+    border: 2px solid rgba(128, 128, 128, 0.356);
+    border-radius: 5px;
+    margin: 20px 0;
+    box-shadow: 2px 2px 4px gray;
+}
+
+#stars {
+    font-size: 1.3em;
+    margin: 25px 0 5px 0;
+    color: rgb(245, 215, 47);
+    text-shadow: 2px 2px 4px gray;
+}
+
+main {
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+#left {
+    margin-right: 3em;
 }
 
 #board {
-    width: 50%;
-    margin: 0 auto;
+    width: 70%;
+    max-width: 650px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -17,10 +70,12 @@ html, body {
     background-color: white;
     border-radius: 5px;
     margin-top: 10px;
+    border: 2px solid rgba(128, 128, 128, 0.356);
+    box-shadow: 2px 4px 4px gray;
 }
 
 .turnable:hover {
-    background-color: rgba(252, 206, 214, 0.925);
+    background-color: rgba(213, 171, 241, 0.925);
 }
 
 .back img {
@@ -32,7 +87,7 @@ opacity: 100%;
 }
 
 .solved {
-    background-color: rgb(30, 82, 128);
+    background-color: rgba(107, 235, 224, 0.486);
 }
 
 .solved img {

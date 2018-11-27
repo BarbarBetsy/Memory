@@ -2,6 +2,8 @@ let counter = 0;
 let turnCounter = 0;
 let pairCounter = 0;
 let cardsTurned = [];
+let watch = new Stopwatch();
+let timer = document.getElementById("timer");
 
 // shuffle the cards by giving each card a random flex-order
 function shuffle() {
@@ -22,6 +24,9 @@ function hideAgain() {
 // show card and lock it down
 function showCard() {
     $(this).removeClass('back').addClass('front').off('click');
+    if (!watch.isOn) {
+        watch.start();
+    }
 
     // count turned cards
     cardsTurned.push($(this).find("img").attr("src"));
@@ -48,7 +53,73 @@ function showCard() {
 
     if (pairCounter === 8) {
         console.log('YAY!');
+        watch.stop();
     }
+}
+
+
+// stopwatch
+function Stopwatch() {
+
+    let time = 0;
+    let interval;
+    let offset;
+
+    function update() {
+        time += delta();
+        let formatedTime = timeFormater(time);
+        timer.textContent = formatedTime;
+    };
+
+    function delta() {
+        let now = Date.now();
+        let timePassed =  now - offset;
+        offset = now;
+        return timePassed;
+    };
+    
+    function timeFormater(timeInMilliseconds) {
+        let time = new Date(timeInMilliseconds);
+        let minutes = time.getMinutes();
+        let seconds = time.getSeconds();
+        let milliseconds = time.getMilliseconds();
+
+        if (minutes < 10) {
+            minutes = '0' + minutes;
+        }
+
+        if (seconds < 10) {
+            seconds = '0' + seconds;
+        }
+
+        if (milliseconds < 100) {
+            milliseconds = '0' + milliseconds;
+        }
+
+        return minutes + " : " + seconds + " . " + milliseconds;
+    };
+
+    this.isOn = false;
+    
+    this.start = function() {
+        if (!this.isOn) {
+           interval = setInterval(update.bind(this), 10);
+           offset = Date.now();
+           this.isOn = true; 
+        }
+    };
+
+    this.stop = function() {
+        if (this.isOn) {
+            clearInterval(interval);
+            interval = null;
+            this.isOn = false;
+        }
+    };
+    
+    this.reset = function() {
+        time = 0;
+    };
 }
 
 // show card
@@ -56,3 +127,5 @@ $('.turnable').on('click', showCard);
 
 // call shuffle function when the page is loaded
 window.addEventListener('load', shuffle);
+
+// stopwatch
