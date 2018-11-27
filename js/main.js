@@ -4,6 +4,7 @@ let pairCounter = 0;
 let cardsTurned = [];
 let watch = new Stopwatch();
 let timer = document.getElementById("timer");
+let starCounter = 5;
 
 // shuffle the cards by giving each card a random flex-order
 function shuffle() {
@@ -38,6 +39,7 @@ function showCard() {
         $('.turnable').off('click')
         $('.turnable').removeClass('turnable');
         turnCounter++;
+        console.log("Turn " + turnCounter);
 
         // check if cards are the same
         if (cardsTurned[0] === cardsTurned[1]) {
@@ -51,12 +53,43 @@ function showCard() {
         }
     }
 
+    if (turnCounter === 5 && pairCounter < 1) {
+        starCounter = starCounter - 1;
+        let star = $('.on');
+        star.first().removeClass('on');
+    }
+
+    if (turnCounter === 7 && pairCounter < 3) {
+        starCounter = starCounter - 1;
+        let star = $('.on');
+        star.first().removeClass('on');
+    }
+
+    if (turnCounter === 9 && pairCounter < 5) {
+        starCounter = starCounter - 1;
+        let star = $('.on');
+        star.first().removeClass('on');
+    }
+
+    if (turnCounter === 11 && pairCounter < 7) {
+        starCounter = starCounter - 1;
+        let star = $('.on');
+        star.first().removeClass('on');
+    }
+
+    if (turnCounter === 17) {
+        starCounter = starCounter - 1;
+        let star = $('.on');
+        star.first().removeClass('on');
+    }
+
+    // congrats on the win
     if (pairCounter === 8) {
         console.log('YAY!');
         watch.stop();
     }
-}
 
+}
 
 // stopwatch
 function Stopwatch() {
@@ -73,11 +106,11 @@ function Stopwatch() {
 
     function delta() {
         let now = Date.now();
-        let timePassed =  now - offset;
+        let timePassed = now - offset;
         offset = now;
         return timePassed;
     }
-    
+
     function timeFormater(timeInMilliseconds) {
         let time = new Date(timeInMilliseconds);
         let minutes = time.getMinutes();
@@ -100,32 +133,30 @@ function Stopwatch() {
     }
 
     this.isOn = false;
-    
-    this.start = function() {
+
+    this.start = function () {
         if (!this.isOn) {
-           interval = setInterval(update.bind(this), 10);
-           offset = Date.now();
-           this.isOn = true; 
+            interval = setInterval(update.bind(this), 10);
+            offset = Date.now();
+            this.isOn = true;
         }
     }
 
-    this.stop = function() {
+    this.stop = function () {
         if (this.isOn) {
             clearInterval(interval);
             interval = null;
             this.isOn = false;
         }
     }
-    
-    this.reset = function() {
+
+    this.reset = function () {
         time = 0;
     }
 }
 
-// show card
+// show card when clicked
 $('.turnable').on('click', showCard);
 
 // call shuffle function when the page is loaded
 window.addEventListener('load', shuffle);
-
-// stopwatch

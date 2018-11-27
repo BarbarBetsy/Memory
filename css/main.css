@@ -68,7 +68,13 @@ main {
 #stars {
     font-size: 1.3em;
     margin: 25px 0 5px 0;
+    color: grey; 
+}
+
+.on {
+    
     color: rgb(245, 215, 47);
+    text-shadow: none;
     text-shadow: 2px 2px 4px gray;
 }
 
