@@ -5,6 +5,8 @@ let cardsTurned = [];
 let watch = new Stopwatch();
 let timer = document.getElementById("timer");
 let starCounter = 5;
+let fast = 0;
+let score = (starCounter * 10000) + fast;
 
 // shuffle the cards by giving each card a random flex-order
 function shuffle() {
@@ -53,25 +55,25 @@ function showCard() {
         }
     }
 
-    if (turnCounter === 5 && pairCounter < 1) {
+    if (turnCounter === 4 && pairCounter < 1) {
         starCounter = starCounter - 1;
         let star = $('.on');
         star.first().removeClass('on');
     }
 
-    if (turnCounter === 7 && pairCounter < 3) {
+    if (turnCounter === 8 && pairCounter < 3) {
         starCounter = starCounter - 1;
         let star = $('.on');
         star.first().removeClass('on');
     }
 
-    if (turnCounter === 9 && pairCounter < 5) {
+    if (turnCounter === 11 && pairCounter < 5) {
         starCounter = starCounter - 1;
         let star = $('.on');
         star.first().removeClass('on');
     }
 
-    if (turnCounter === 11 && pairCounter < 7) {
+    if (turnCounter === 13 && pairCounter < 7) {
         starCounter = starCounter - 1;
         let star = $('.on');
         star.first().removeClass('on');
@@ -85,8 +87,8 @@ function showCard() {
 
     // congrats on the win
     if (pairCounter === 8) {
-        let finishTime = document.getElementById('timer').textContent;
-        console.log('YAY! You have won in ' + finishTime + ' with ' + starCounter + ' stars left!');
+        watch.score();
+        console.log('YAY! You have won with a score of ' + fast + ' !');
         watch.stop();
     }
 
@@ -154,17 +156,22 @@ function Stopwatch() {
     this.reset = function () {
         time = 0;
     }
+
+    this.score = function () {
+        fast = (90000 - time);
+        return fast;
+    }
 }
 
-// reset function
-function reset() {
-   document.getElementById('board').reset;
-   document.getElementById('timer').reset;
-}
+// // reset function
+// function reset() {
+//    document.getElementById('board').reset;
+//    document.getElementById('timer').reset;
+// }
 
 
-// reset when reset button is clicked
-$('#reset').on('click', reset);
+// // reset when reset button is clicked
+// $('#reset').on('click', reset);
 
 // show card when clicked
 $('.turnable').on('click', showCard);
