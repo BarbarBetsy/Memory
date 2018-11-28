@@ -39,7 +39,7 @@ function showCard() {
         $('.turnable').off('click')
         $('.turnable').removeClass('turnable');
         turnCounter++;
-        console.log("Turn " + turnCounter);
+        document.getElementById('turn-counter').textContent = turnCounter;
 
         // check if cards are the same
         if (cardsTurned[0] === cardsTurned[1]) {
@@ -85,7 +85,8 @@ function showCard() {
 
     // congrats on the win
     if (pairCounter === 8) {
-        console.log('YAY!');
+        let finishTime = document.getElementById('timer').textContent;
+        console.log('YAY! You have won in ' + finishTime + ' with ' + starCounter + ' stars left!');
         watch.stop();
     }
 
@@ -99,12 +100,12 @@ function Stopwatch() {
     let offset;
 
     function update() {
-        time += delta();
+        time += timePassing();
         let formatedTime = timeFormater(time);
         timer.textContent = formatedTime;
     }
 
-    function delta() {
+    function timePassing() {
         let now = Date.now();
         let timePassed = now - offset;
         offset = now;
@@ -154,6 +155,16 @@ function Stopwatch() {
         time = 0;
     }
 }
+
+// reset function
+function reset() {
+   document.getElementById('board').reset;
+   document.getElementById('timer').reset;
+}
+
+
+// reset when reset button is clicked
+$('#reset').on('click', reset);
 
 // show card when clicked
 $('.turnable').on('click', showCard);

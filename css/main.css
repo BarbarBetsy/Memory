@@ -23,7 +23,7 @@ h3 {
 }
 
 p {
-    font-size: 40px;
+    font-size: 30px;
 }
 
 a {
@@ -61,21 +61,55 @@ main {
     background-color: white;
     border: 2px solid rgba(128, 128, 128, 0.356);
     border-radius: 5px;
-    margin: 20px 0;
-    box-shadow: 2px 2px 4px gray;
+    margin: 10px 0;
 }
 
 #stars {
     font-size: 1.3em;
-    margin: 25px 0 5px 0;
+    margin: 20px 0 5px 0;
     color: grey; 
 }
 
 .on {
-    
     color: rgb(245, 215, 47);
     text-shadow: none;
     text-shadow: 2px 2px 4px gray;
+}
+
+#small {
+    width: 70%;
+    display: flex;
+    align-content: space-around;
+    margin: 0 auto;
+}
+
+#small h3 {
+    margin: 0;
+}
+
+#turn-counter {
+    background-color: white;
+    border: 2px solid rgba(128, 128, 128, 0.356);
+    border-radius: 5px;
+    margin: 0 0 10px 20px;
+    width: 40%;
+}
+
+#reset {
+    background-color: white;
+    border: 2px solid rgba(128, 128, 128, 0.356);
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px gray;
+    cursor: pointer;
+}
+
+#reset h3 {
+    margin:0;
+}
+
+#reset:hover {
+    background-color: rgb(75, 131, 150);
+    box-shadow: none;
 }
 
 #score {
@@ -124,6 +158,7 @@ main {
 
 .turnable:hover {
     background-color:  rgb(75, 131, 150);
+    cursor: pointer;
 }
 
 .back img {
