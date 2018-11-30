@@ -6,7 +6,6 @@ let watch = new Stopwatch();
 let timer = document.getElementById("timer");
 let starCounter = 5;
 let fast = 0;
-let score = (starCounter * 10000) + fast;
 
 // shuffle the cards by giving each card a random flex-order
 function shuffle() {
@@ -16,12 +15,35 @@ function shuffle() {
     }
 }
 
-// hide cards again
+// hide unsolved cards again
 function hideAgain() {
     $('.front').addClass('back turnable');
     $('.back').removeClass('front').addClass('turnable').on('click', showCard);
     counter = 0;
     cardsTurned = [];
+}
+
+// hide every card (needed for reset)
+function hideAll() {
+    $('.solved').on('click', showCard);
+    $('.card').addClass('back turnable').removeClass('front solved');
+}
+
+// reset everything
+function reset() {
+    watch.stop();
+    watch.reset();
+    hideAll();
+    shuffle();
+    $('.fa-star').addClass('on');
+    document.getElementById('turn-counter').textContent = 0;
+    timer.textContent = '00 : 00 . 000';
+    counter = 0;
+    turnCounter = 0;
+    pairCounter = 0;
+    cardsTurned.length = 0;
+    starCounter = 5;
+    fast = 0;
 }
 
 // show card and lock it down
@@ -43,7 +65,7 @@ function showCard() {
         turnCounter++;
         document.getElementById('turn-counter').textContent = turnCounter;
 
-        // check if cards are the same
+        // check if cards are the same - leave open when solved - turn around if not
         if (cardsTurned[0] === cardsTurned[1]) {
             $('.front').addClass('solved').removeClass('front back turnable').off('click');
             pairCounter++;
@@ -55,6 +77,7 @@ function showCard() {
         }
     }
 
+    // turn off the stars
     if (turnCounter === 4 && pairCounter < 1) {
         starCounter = starCounter - 1;
         let star = $('.on');
@@ -87,11 +110,13 @@ function showCard() {
 
     // congrats on the win
     if (pairCounter === 8) {
-        watch.score();
-        console.log('YAY! You have won with a score of ' + fast + ' !');
+        watch.howFast();
         watch.stop();
+        let score = (starCounter * 10000) + fast;
+        let winAlert = document.getElementById('win-text');
+        winAlert.textContent = "YAY! You win with a score of " + score + "!";
+        reset();
     }
-
 }
 
 // stopwatch
@@ -101,12 +126,14 @@ function Stopwatch() {
     let interval;
     let offset;
 
+    // update 'now-time'
     function update() {
         time += timePassing();
         let formatedTime = timeFormater(time);
         timer.textContent = formatedTime;
     }
 
+    // calculate passed time
     function timePassing() {
         let now = Date.now();
         let timePassed = now - offset;
@@ -114,6 +141,7 @@ function Stopwatch() {
         return timePassed;
     }
 
+    // format time
     function timeFormater(timeInMilliseconds) {
         let time = new Date(timeInMilliseconds);
         let minutes = time.getMinutes();
@@ -137,6 +165,7 @@ function Stopwatch() {
 
     this.isOn = false;
 
+    // start timer
     this.start = function () {
         if (!this.isOn) {
             interval = setInterval(update.bind(this), 10);
@@ -145,6 +174,7 @@ function Stopwatch() {
         }
     }
 
+    // end timer
     this.stop = function () {
         if (this.isOn) {
             clearInterval(interval);
@@ -153,28 +183,23 @@ function Stopwatch() {
         }
     }
 
+    // reset timer
     this.reset = function () {
         time = 0;
     }
 
-    this.score = function () {
+    // calculate ho many seconds to 1.5 minutes (needed for the score)
+    this.howFast = function () {
         fast = (90000 - time);
         return fast;
     }
 }
 
-// // reset function
-// function reset() {
-//    document.getElementById('board').reset;
-//    document.getElementById('timer').reset;
-// }
-
-
-// // reset when reset button is clicked
-// $('#reset').on('click', reset);
-
 // show card when clicked
 $('.turnable').on('click', showCard);
+
+// reset everything when reset-button is clicked
+$('#reset').on('click', reset);
 
 // call shuffle function when the page is loaded
 window.addEventListener('load', shuffle);
