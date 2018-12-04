@@ -6,6 +6,21 @@ let watch = new Stopwatch();
 let timer = document.getElementById("timer");
 let starCounter = 5;
 let fast = 0;
+let winAlert = document.getElementById('win-text');
+let main = document.getElementById('main');
+let scoreHere = document.getElementById('score-here');
+let firstPlace = {
+    name: "Player One",
+    score: 00000
+};
+let secondPlace = {
+    name: "Player Two",
+    score: 00000
+};
+let thirdPlace = {
+    name: "Player Three",
+    score: 00000
+};
 
 // shuffle the cards by giving each card a random flex-order
 function shuffle() {
@@ -23,6 +38,13 @@ function hideAgain() {
     cardsTurned = [];
 }
 
+// check score and compare to highscore
+// function finalScore() {
+//     if (score > secondPlace.score) {
+//         askName();
+//     } 
+// }
+
 // hide every card (needed for reset)
 function hideAll() {
     $('.solved').on('click', showCard);
@@ -38,6 +60,8 @@ function reset() {
     $('.fa-star').addClass('on');
     document.getElementById('turn-counter').textContent = 0;
     timer.textContent = '00 : 00 . 000';
+    winAlert.style.top = "-100%";
+    main.style.opacity = 1;
     counter = 0;
     turnCounter = 0;
     pairCounter = 0;
@@ -113,9 +137,9 @@ function showCard() {
         watch.howFast();
         watch.stop();
         let score = (starCounter * 10000) + fast;
-        let winAlert = document.getElementById('win-text');
-        winAlert.textContent = "YAY! You win with a score of " + score + "!";
-        reset();
+        scoreHere.textContent = score;
+        winAlert.style.top = 0;
+        main.style.opacity = 0.3;
     }
 }
 
@@ -199,7 +223,7 @@ function Stopwatch() {
 $('.turnable').on('click', showCard);
 
 // reset everything when reset-button is clicked
-$('#reset').on('click', reset);
+$('.reset').on('click', reset);
 
 // call shuffle function when the page is loaded
 window.addEventListener('load', shuffle);

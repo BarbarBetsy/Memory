@@ -18,7 +18,7 @@
 
 <body>
 
-    <main>
+    <main id="main">
         <div id="left">
             <h1>memory</h1>
             <h2>the hedgehog & his architect</h2>
@@ -37,17 +37,33 @@
                 <h3>Turns</h3>
                 <p id="turn-counter">0</p>
             </div>
-            <div id="reset">
+            <div class="reset">
                 <h3>reset</h3>
             </div>
 
             <div id="score">
                 <h3>high score</h3>
                 <hr>
+                <table>
+                    <tr>
+                        <td>1.</td>
+                        <td>Player One</td>
+                        <td>00000</td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>Player Two</td>
+                        <td>00000</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>Player Three</td>
+                        <td>00000</td>
+                    </tr>
+                </table>
             </div>
-
-
         </div>
+
         <div id="right">
             <div id="board">
                 <div id="card1" class="card turnable back c1"><img src="img/c1.svg"></div>
@@ -70,14 +86,20 @@
             <div id="credit">
                 <p>Illustrations by <a href="https://taniasivertsen.jimdo.com/" target="_blank">Tania Sivertsen</a>.</p>
                 <img src="img/c7.svg" alt="a happy little hedgehog">
-
             </div>
         </div>
+
     </main>
 
-        <div >
-            <p id="win-text"></p>
+    <div id="win-text">
+        <img src="img/win.svg" alt="the hedgehog of wins">
+        <p>YAY! You win! Your score is <span id="score-here"></span>!</p>
+        <textarea placeholder="enter your name"></textarea>
+        <div class="reset">
+            <h3>play again</h3>
         </div>
+
+    </div>
 
 
 
