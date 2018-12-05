@@ -163,7 +163,7 @@ function showCard() {
         watch.stop();
         score = (starCounter * 10000) + fast;
         scoreHere.textContent = score;
-        winAlert.style.top = 0;
+        winAlert.style.top = '5%';
         main.style.opacity = 0.3;
         askName();
     }

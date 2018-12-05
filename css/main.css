@@ -178,16 +178,19 @@ table {
 #win-text {
     position: absolute;
     top: -100%;
-    left: 50%;
+    left: 35%;
 }
 
 #win-text p {
     font-size: 1.5em;
     margin-top: 0;
+    padding: 5px;
+    background-color:  rgba(75, 131, 150, 0.521);
+    border-radius: 4px;
 }
 
 input {
-    margin-bottom: 30px;
+    margin: 0 auto 30px auto;
     font-family: 'Oswald', sans-serif;
     font-size: 0.9em;
     border: 2px solid rgba(128, 128, 128, 0.356);
