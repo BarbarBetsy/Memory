@@ -9,18 +9,13 @@ let fast = 0;
 let winAlert = document.getElementById('win-text');
 let main = document.getElementById('main');
 let scoreHere = document.getElementById('score-here');
-let firstPlace = {
-    name: "Player One",
-    score: 00000
-};
-let secondPlace = {
-    name: "Player Two",
-    score: 00000
-};
-let thirdPlace = {
-    name: "Player Three",
-    score: 00000
-};
+let score = 0;
+let highScore = [
+    ['Hans', 0000],
+    ['Franz', 0000],
+    ['Schranz', 0000]
+];
+let newPlayer = document.getElementById('new-player');
 
 // shuffle the cards by giving each card a random flex-order
 function shuffle() {
@@ -38,12 +33,41 @@ function hideAgain() {
     cardsTurned = [];
 }
 
-// check score and compare to highscore
-// function finalScore() {
-//     if (score > secondPlace.score) {
-//         askName();
-//     } 
-// }
+// ask name if score is higher than third place
+function askName() {
+    if (score < highScore[2][1]) {
+        newPlayer.style.display = 'none';
+    }
+}
+
+// check place for the score
+function checkScore() {
+    playerName = document.getElementById('new-player').value;
+    console.log(playerName);
+    console.log(score);
+    if (score > highScore[0][1]) {
+        highScore[2] = highScore[1];
+        highScore[1] = highScore[0];
+        highScore[0] = [playerName, score];
+    } else if (score > highScore[1][1]) {
+        highScore[2] = highScore[1];
+        highScore[1] = [playerName, score];
+    } else if (score > highScore[2][1]) {
+        highScore[2] = [playerName, score];
+    }
+    console.log(highScore);
+    outputScore();
+}
+
+// fill score board with the info from the highScore
+function outputScore() {
+    document.getElementById('one').textContent = highScore[0][0];
+    document.getElementById('one-score').textContent = highScore[0][1];
+    document.getElementById('two').textContent = highScore[1][0];
+    document.getElementById('two-score').textContent = highScore[1][1];
+    document.getElementById('three').textContent = highScore[2][0];
+    document.getElementById('three-score').textContent = highScore[2][1];
+}
 
 // hide every card (needed for reset)
 function hideAll() {
@@ -76,6 +100,7 @@ function showCard() {
     if (!watch.isOn) {
         watch.start();
     }
+
 
     // count turned cards
     cardsTurned.push($(this).find("img").attr("src"));
@@ -133,13 +158,14 @@ function showCard() {
     }
 
     // congrats on the win
-    if (pairCounter === 8) {
+    if (pairCounter === 1) {
         watch.howFast();
         watch.stop();
-        let score = (starCounter * 10000) + fast;
+        score = (starCounter * 10000) + fast;
         scoreHere.textContent = score;
         winAlert.style.top = 0;
         main.style.opacity = 0.3;
+        askName();
     }
 }
 
@@ -225,5 +251,14 @@ $('.turnable').on('click', showCard);
 // reset everything when reset-button is clicked
 $('.reset').on('click', reset);
 
+// add name and score to high score if play-again button is clicked
+$('.again').on('click', checkScore);
+$('.again').on('click', function () {
+    newPlayer.style.display = 'block'
+});
+
 // call shuffle function when the page is loaded
 window.addEventListener('load', shuffle);
+
+// show the score when the page is loaded
+window.addEventListener('load', outputScore);

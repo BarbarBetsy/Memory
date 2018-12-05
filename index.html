@@ -47,18 +47,18 @@
                 <table>
                     <tr>
                         <td>1.</td>
-                        <td>Player One</td>
-                        <td>00000</td>
+                        <td id="one"></td>
+                        <td id="one-score"></td>
                     </tr>
                     <tr>
                         <td>2.</td>
-                        <td>Player Two</td>
-                        <td>00000</td>
+                        <td id="two"></td>
+                        <td id="two-score"></td>
                     </tr>
                     <tr>
                         <td>3.</td>
-                        <td>Player Three</td>
-                        <td>00000</td>
+                        <td id="three"></td>
+                        <td id="three-score"></td>
                     </tr>
                 </table>
             </div>
@@ -93,12 +93,11 @@
 
     <div id="win-text">
         <img src="img/win.svg" alt="the hedgehog of wins">
-        <p>YAY! You win! Your score is <span id="score-here"></span>!</p>
-        <textarea placeholder="enter your name"></textarea>
-        <div class="reset">
-            <h3>play again</h3>
-        </div>
-
+        <p>YAY! You win! Your score is <strong><span id="score-here"></span></strong>!</p>
+        <form>
+            <input type="text" id="new-player" value="Player">
+            <input type="button" class="reset again" value="play again">
+        </form>
     </div>
 
 
