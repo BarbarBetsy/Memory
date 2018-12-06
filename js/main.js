@@ -158,7 +158,7 @@ function showCard() {
     }
 
     // congrats on the win
-    if (pairCounter === 1) {
+    if (pairCounter === 8) {
         watch.howFast();
         watch.stop();
         score = (starCounter * 10000) + fast;
