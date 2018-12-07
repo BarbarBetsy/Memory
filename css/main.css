@@ -3,7 +3,7 @@ body {
     font-family: 'Amatic SC', cursive;
     text-align: center;
     font-size: 25px;
-    width: 100%;
+    width: 98%;
 }
 
 h1 {
@@ -29,7 +29,7 @@ a {
 }
 
 a:hover {
-    color: #24305E;
+    color: #24305e;
 }
 
 td {
@@ -41,6 +41,15 @@ hr {
     width: 60%;
     margin: 10px auto;
     border: 1px solid rgba(128, 128, 128, 0.356);
+}
+
+/* transitions */
+a,
+img,
+i,
+div {
+    transition: 250ms;
+    -webkit-transition: 300ms;
 }
 
 /* the main content */
@@ -59,14 +68,11 @@ main {
     width: 850px;
     margin: 1em auto;
     padding: 1em 1em 0 1em;
-    background-color: #C2DAD0;
+    background-color: #c2dad0;
     border-radius: 5px;
     box-shadow: 2px 4px 4px gray;
     opacity: 1;
 }
-
-/* the sidebar left */
-
 
 /* timer */
 #timer {
@@ -87,7 +93,7 @@ main {
     grid-area: stars;
     font-size: 1.3em;
     margin: 10px 0 5px 0;
-    color: #F8E9A1;
+    color: #f8e9a1;
 }
 
 .on {
@@ -135,7 +141,7 @@ main {
 }
 
 .reset:hover {
-    background-color: #C2B9B0;
+    background-color: #c2b9b0;
     box-shadow: none;
 }
 
@@ -173,7 +179,7 @@ table {
 }
 
 .turnable:hover {
-    background-color: #C2B9B0;
+    background-color: #c2b9b0;
     cursor: pointer;
 }
 
@@ -186,7 +192,7 @@ table {
 }
 
 .solved {
-    background-color: #AFD275;
+    background-color: #afd275;
     border-radius: 5px;
 }
 
@@ -332,7 +338,7 @@ input {
 @media only screen and (max-width: 500px) {
 
     body {
-        background-color: #C2DAD0;
+        background-color: #c2dad0;
     }
 
     main {
