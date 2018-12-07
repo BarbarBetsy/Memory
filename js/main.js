@@ -3,19 +3,19 @@ let turnCounter = 0;
 let pairCounter = 0;
 let cardsTurned = [];
 let watch = new Stopwatch();
-let timer = document.getElementById("timer");
+const timer = document.getElementById("timer");
 let starCounter = 5;
 let fast = 0;
-let winAlert = document.getElementById('win-text');
-let main = document.getElementById('main');
-let scoreHere = document.getElementById('score-here');
+const winAlert = document.getElementById('win-text');
+const main = document.getElementById('main');
+const scoreHere = document.getElementById('score-here');
 let score = 0;
 let highScore = [
     ['Hans', 0000],
     ['Franz', 0000],
     ['Schranz', 0000]
 ];
-let newPlayer = document.getElementById('new-player');
+const newPlayer = document.getElementById('new-player');
 
 // shuffle the cards by giving each card a random flex-order
 function shuffle() {
@@ -43,8 +43,6 @@ function askName() {
 // check place for the score
 function checkScore() {
     playerName = document.getElementById('new-player').value;
-    console.log(playerName);
-    console.log(score);
     if (score > highScore[0][1]) {
         highScore[2] = highScore[1];
         highScore[1] = highScore[0];
@@ -55,7 +53,6 @@ function checkScore() {
     } else if (score > highScore[2][1]) {
         highScore[2] = [playerName, score];
     }
-    console.log(highScore);
     outputScore();
 }
 
@@ -101,10 +98,8 @@ function showCard() {
         watch.start();
     }
 
-
     // count turned cards
     cardsTurned.push($(this).find("img").attr("src"));
-    console.log(cardsTurned);
     counter++;
 
     // make sure only two cards are turned at the same time
