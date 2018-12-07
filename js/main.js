@@ -9,11 +9,13 @@ let fast = 0;
 const winAlert = document.getElementById('win-text');
 const main = document.getElementById('main');
 const scoreHere = document.getElementById('score-here');
+const starsHere = document.getElementById('stars-here');
+const timeHere = document.getElementById('time-here');
 let score = 0;
 let highScore = [
-    ['Hans', 0000],
-    ['Franz', 0000],
-    ['Schranz', 0000]
+    ['Hans Gruber', 0000],
+    ['Mama Fratelli', 0000],
+    ['Jack Torrance', 0000]
 ];
 const newPlayer = document.getElementById('new-player');
 
@@ -122,34 +124,38 @@ function showCard() {
     }
 
     // turn off the stars
-    if (turnCounter === 4 && pairCounter < 1) {
+    if (turnCounter === 5 && pairCounter < 1) {
         starCounter = starCounter - 1;
         let star = $('.on');
         star.first().removeClass('on');
     }
 
-    if (turnCounter === 8 && pairCounter < 3) {
+    if (turnCounter === 9 && pairCounter < 3) {
         starCounter = starCounter - 1;
         let star = $('.on');
         star.first().removeClass('on');
     }
 
-    if (turnCounter === 11 && pairCounter < 5) {
+    if (turnCounter === 13 && pairCounter < 5) {
         starCounter = starCounter - 1;
         let star = $('.on');
         star.first().removeClass('on');
     }
 
-    if (turnCounter === 13 && pairCounter < 7) {
+    if (turnCounter === 17 && pairCounter < 7) {
         starCounter = starCounter - 1;
         let star = $('.on');
         star.first().removeClass('on');
     }
 
-    if (turnCounter === 17) {
+    if (turnCounter === 22) {
         starCounter = starCounter - 1;
         let star = $('.on');
         star.first().removeClass('on');
+    }
+
+    if (starCounter < 0) {
+        starCounter = 0;
     }
 
     // congrats on the win
@@ -158,6 +164,8 @@ function showCard() {
         watch.stop();
         score = (starCounter * 10000) + fast;
         scoreHere.textContent = score;
+        starsHere.textContent = starCounter;
+        timeHere.textContent = (90000 - fast);
         winAlert.style.top = '5%';
         main.style.opacity = 0.3;
         askName();
