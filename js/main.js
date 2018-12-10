@@ -13,9 +13,9 @@ const starsHere = document.getElementById('stars-here');
 const timeHere = document.getElementById('time-here');
 let score = 0;
 let highScore = [
-    ['Hans Gruber', 0000],
-    ['Mama Fratelli', 0000],
-    ['Jack Torrance', 0000]
+    ['Ms. Hérisson', 100000],
+    ['Mrs. Hedgehog', 50000],
+    ['Mr. Erizo', 25000]
 ];
 const newPlayer = document.getElementById('new-player');
 
@@ -124,31 +124,31 @@ function showCard() {
     }
 
     // turn off the stars
-    if (turnCounter === 5 && pairCounter < 1) {
+    if (turnCounter === 4 && pairCounter < 1) {
         starCounter = starCounter - 1;
         let star = $('.on');
         star.first().removeClass('on');
     }
 
-    if (turnCounter === 9 && pairCounter < 3) {
+    if (turnCounter === 7 && pairCounter < 3) {
         starCounter = starCounter - 1;
         let star = $('.on');
         star.first().removeClass('on');
     }
 
-    if (turnCounter === 13 && pairCounter < 5) {
+    if (turnCounter === 12 && pairCounter < 7) {
         starCounter = starCounter - 1;
         let star = $('.on');
         star.first().removeClass('on');
     }
 
-    if (turnCounter === 17 && pairCounter < 7) {
+    if (turnCounter === 16 && pairCounter < 8) {
         starCounter = starCounter - 1;
         let star = $('.on');
         star.first().removeClass('on');
     }
 
-    if (turnCounter === 22) {
+    if (turnCounter === 20) {
         starCounter = starCounter - 1;
         let star = $('.on');
         star.first().removeClass('on');
