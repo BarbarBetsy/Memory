@@ -98,6 +98,7 @@ function showCard() {
     $(this).removeClass('back turnable').addClass('front').off('click');
     if (!watch.isOn) {
         watch.start();
+        console.log(this);
     }
 
     // count turned cards

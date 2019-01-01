@@ -23,3 +23,5 @@ You can play it on a desktop computer or on your mobil device.
 Slowly and carefully and from scratch.
 
 For the cards I used the illustrations from my childens book *the hedgehog & his architect* drawn by [Tania Sivertsen](https://taniasivertsen.jimdo.com/).
+
+![The Game in action](img/Memory-in-action.png)
