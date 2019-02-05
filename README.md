@@ -1,7 +1,7 @@
 # Memory
 A memory game.
 
-Build as the second project to the Udacity Front End Nano-Degree.
+Build as the second project to the Udacity Front End Nanodegree.
 
 ## Dependencies
 * jQuery
